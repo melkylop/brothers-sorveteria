@@ -27,7 +27,6 @@ Site estático, leve e responsivo construído com **HTML5**, **CSS3** e **JavaSc
 ├── privacidade.html           # Política de privacidade (LGPD)
 ├── 404.html                   # Página de erro 404
 ├── lgpd.js                    # Banner de consentimento de cookies
-├── image-slot.js              # Componente de slot de imagem (uso interno)
 ├── manifest.json              # Manifesto PWA
 ├── robots.txt                 # Diretivas para crawlers
 ├── sitemap.xml                # Mapa do site
