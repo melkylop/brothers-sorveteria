@@ -2,7 +2,7 @@
 
 Site institucional da **Brothers Sorveteria e Açaíteria** — sabor artesanal direto do coração da Amazônia.
 
-![Brothers Sorveteria](assets/sobre-equipe.jpg)
+![Brothers Sorveteria]
 
 ## Sobre o projeto
 
