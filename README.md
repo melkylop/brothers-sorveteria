@@ -1,4 +1,4 @@
-# Brothers Sorveteria e Açaíteria
+# Sorveteria e Açaíteria
 
 Site institucional da **Brothers Sorveteria e Açaíteria** — sabor artesanal direto do coração da Amazônia.
 
