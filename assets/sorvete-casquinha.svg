@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 600" fill="none">
+  
+  <ellipse cx="190" cy="580" rx="80" ry="10" fill="#2A1136" opacity=".15"></ellipse>
+
+  
+  <circle cx="190" cy="125" r="80" fill="#3E1B4F" stroke="#2A1136" stroke-width="4"></circle>
+  <path d="M155 90 Q170 75 200 85" stroke="#6E3D87" stroke-width="6" fill="none" stroke-linecap="round"></path>
+  
+  <circle cx="170" cy="115" r="3" fill="#F5C518"></circle>
+  <circle cx="210" cy="130" r="3" fill="#F5C518"></circle>
+  <circle cx="195" cy="160" r="3" fill="#FBF6E9"></circle>
+  <circle cx="160" cy="155" r="3" fill="#FBF6E9"></circle>
+
+  
+  <circle cx="135" cy="195" r="78" fill="#F5C518" stroke="#3E1B4F" stroke-width="4"></circle>
+  <path d="M100 165 Q115 150 145 158" stroke="#FFE08A" stroke-width="7" fill="none" stroke-linecap="round"></path>
+  <circle cx="120" cy="190" r="3" fill="#3E1B4F"></circle>
+  <circle cx="155" cy="220" r="3" fill="#3E1B4F"></circle>
+
+  
+  <circle cx="245" cy="205" r="75" fill="#FBF6E9" stroke="#3E1B4F" stroke-width="4"></circle>
+  <path d="M215 178 Q230 165 258 170" stroke="#FFFFFF" stroke-width="7" fill="none" stroke-linecap="round"></path>
+  
+  <ellipse cx="230" cy="215" rx="6" ry="4" fill="#3E1B4F" transform="rotate(20 230 215)"></ellipse>
+  <ellipse cx="260" cy="230" rx="6" ry="4" fill="#3E1B4F" transform="rotate(-15 260 230)"></ellipse>
+  <ellipse cx="245" cy="250" rx="5" ry="3" fill="#3E1B4F"></ellipse>
+
+  
+  <path d="M115 265 Q113 295 120 305 Q128 295 125 265 Z" fill="#F5C518" stroke="#3E1B4F" stroke-width="3"></path>
+
+  
+  <path d="M115 280 L265 280 L195 555 Q190 565 185 555 Z" fill="#E8B85A" stroke="#3E1B4F" stroke-width="4" stroke-linejoin="round"></path>
+
+  
+  <g stroke="#3E1B4F" stroke-width="2.5" opacity=".75">
+    
+    <line x1="135" y1="300" x2="245" y2="300"></line>
+    <line x1="142" y1="330" x2="238" y2="330"></line>
+    <line x1="148" y1="360" x2="232" y2="360"></line>
+    <line x1="155" y1="390" x2="225" y2="390"></line>
+    <line x1="161" y1="420" x2="218" y2="420"></line>
+    <line x1="168" y1="450" x2="212" y2="450"></line>
+    <line x1="175" y1="480" x2="205" y2="480"></line>
+    <line x1="182" y1="510" x2="198" y2="510"></line>
+    
+    <line x1="140" y1="285" x2="195" y2="555" stroke-width="2"></line>
+    <line x1="165" y1="285" x2="195" y2="555" stroke-width="2" opacity=".6"></line>
+    <line x1="190" y1="285" x2="195" y2="555" stroke-width="2" opacity=".6"></line>
+    <line x1="215" y1="285" x2="195" y2="555" stroke-width="2" opacity=".6"></line>
+    <line x1="240" y1="285" x2="195" y2="555" stroke-width="2"></line>
+  </g>
+
+  
+  <ellipse cx="190" cy="280" rx="75" ry="10" fill="#D4A24A" stroke="#3E1B4F" stroke-width="4"></ellipse>
+</svg>

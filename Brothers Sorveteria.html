@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Brothers — Sorveteria e Açaíteria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  :root{
+    --yellow: #F5C518;          /* amarelo brothers */
+    --yellow-soft: #FFE9A0;     /* amarelo claro de fundo */
+    --acai: #3E1B4F;            /* roxo açaí profundo */
+    --acai-deep: #2A1136;       /* açaí mais escuro */
+    --cream: #FFFFFF;           /* fundo branco (foi creme) */
+    --ink: #2A1136;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  /* ===== Header (fixo no canto) ===== */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:flex-end;align-items:flex-start;
+    padding:28px 40px 0;
+    pointer-events:none;
+  }
+  .site-header > *{pointer-events:auto}
+  .logo-mark{
+    font-family:'Yellowtail',cursive;
+    font-size:54px;
+    color:var(--acai);
+    line-height:.9;
+    letter-spacing:-.5px;
+    text-align:center;
+  }
+  .logo-mark small{
+    display:block;
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    font-size:9.5px;
+    letter-spacing:.32em;
+    color:var(--acai);
+    text-align:center;
+    margin-top:-4px;
+  }
+  .menu-btn{
+    display:flex;align-items:center;gap:14px;
+    background:transparent;border:0;cursor:pointer;
+    font-family:'Anton',sans-serif;
+    font-size:38px;letter-spacing:.04em;
+    color:var(--acai);
+    padding:6px 4px;
+  }
+  .menu-btn .bars{display:flex;flex-direction:column;gap:6px}
+  .menu-btn .bars span{display:block;width:34px;height:3px;background:var(--acai);border-radius:2px}
+
+  /* ===== Hero ===== */
+  /* logo no topo do hero (não-fixo) */
+  .hero-logo{
+    position:relative;z-index:3;
+    text-align:center;
+    margin-bottom:24px;
+  }
+  .hero-logo .logo-mark{font-size:68px}
+  .hero-logo .logo-mark small{font-size:11px;letter-spacing:.36em}
+
+  .hero{
+    position:relative;
+    min-height:100vh;
+    padding:60px 0 60px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .hero-bg-word{
+    position:absolute;
+    left:50%;top:200px;
+    transform:translateX(-50%);
+    font-family:'Anton',sans-serif;
+    font-size:clamp(220px,30vw,520px);
+    color:var(--yellow);
+    letter-spacing:-.02em;
+    line-height:.85;
+    z-index:1;
+    white-space:nowrap;
+    user-select:none;
+  }
+  .featured-stamp{
+    position:absolute;top:90px;right:60px;
+    width:84px;height:84px;
+    border:1.5px solid var(--acai);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    z-index:5;
+    background:var(--cream);
+  }
+  .featured-stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 8s linear infinite}
+  .featured-stamp .b{
+    font-family:'Yellowtail',cursive;
+    font-size:34px;color:var(--acai);
+    line-height:1;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .hero-products{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:repeat(3,1fr);
+    align-items:end;
+    max-width:1700px;margin:auto auto 0;
+    padding:0 40px;
+    gap:10px;
+    width:100%;
+  }
+  .product{
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-end;
+  }
+  .product .product-img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    object-position:bottom center;
+    filter: drop-shadow(0 24px 28px rgba(42,17,54,.22));
+  }
+  .product-1 .product-img{max-height:1040px}
+  .product-2 .product-img{max-height:1100px;transform:scale(1.5);transform-origin:bottom center}
+  .product-3 .product-img{max-height:1060px}
+  .ticket{
+    position:absolute;
+    left:-10px;bottom:80px;
+    background:var(--acai);
+    color:var(--yellow);
+    font-family:'Anton',sans-serif;
+    font-size:22px;letter-spacing:.04em;
+    padding:18px 22px;
+    line-height:1.05;
+    text-align:center;
+    z-index:3;
+    clip-path: polygon(
+      0 0, 100% 0,
+      96% 50%, 100% 100%,
+      0 100%, 4% 50%
+    );
+    min-width:140px;
+  }
+  .product-2 .ticket{left:-10px;right:auto;bottom:120px;background:var(--acai);color:var(--yellow)}
+  .product-3 .ticket{left:-10px;bottom:60px}
+
+  /* badges redondos nos produtos */
+  .badge{
+    position:absolute;
+    width:64px;height:64px;border-radius:50%;
+    border:1.5px solid var(--acai);
+    background:var(--cream);
+    color:var(--acai);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:8px;letter-spacing:.12em;
+    line-height:1.15;
+    z-index:4;
+    padding:6px;
+  }
+
+  /* ===== Faixa fresco ===== */
+  .fresco{
+    position:relative;
+    padding:160px 0 120px;
+    overflow:hidden;
+  }
+  .fresco-word{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(180px,26vw,420px);
+    color:var(--yellow-soft);
+    text-align:center;
+    line-height:.85;
+    letter-spacing:-.02em;
+    margin-bottom:-140px;
+    position:relative;z-index:1;
+  }
+  .fresco-stamp{
+    position:absolute;top:140px;left:60px;
+    width:140px;height:140px;
+    border:2px solid var(--acai);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--cream);
+    z-index:5;
+  }
+  .fresco-stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 40s linear infinite reverse}
+  .fresco-stamp .b{font-family:'Yellowtail',cursive;font-size:60px;color:var(--acai)}
+
+  .fresco-hero{
+    position:relative;z-index:2;
+    max-width:1180px;margin:0 auto;
+    padding:0 60px;
+    display:grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    align-items:start;
+    gap:24px;
+  }
+  .fresco-side{
+    display:flex;flex-direction:column;
+    gap:14px;
+    padding-top:90px;
+  }
+  .fresco-side.right{align-items:flex-end;text-align:right}
+  .fresco-side .kicker{
+    font-family:'Yellowtail',cursive;
+    font-size:46px;color:var(--acai);line-height:.9;
+  }
+  .fresco-side .title{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(26px,2.4vw,36px);
+    color:var(--acai);
+    line-height:1;letter-spacing:.01em;
+    max-width:260px;
+  }
+  .fresco-side.right .title{max-width:240px}
+  .fresco-side .desc{
+    font-family:'DM Sans',sans-serif;
+    font-size:13.5px;line-height:1.65;
+    color:rgba(42,17,54,.78);
+    max-width:260px;
+  }
+  .fresco-side .meta{
+    margin-top:8px;
+    display:flex;flex-direction:column;gap:6px;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:10.5px;letter-spacing:.32em;
+    color:var(--acai);text-transform:uppercase;
+  }
+  .fresco-side .meta span{
+    display:flex;align-items:center;gap:10px;
+  }
+  .fresco-side.right .meta span{justify-content:flex-end}
+  .fresco-side .meta span::before{
+    content:"";width:18px;height:1.5px;background:var(--acai);display:inline-block;
+  }
+  .fresco-side.right .meta span::before{order:2}
+
+  .fresco-stage{
+    position:relative;
+    aspect-ratio: 3 / 4;
+    width:100%;
+    border-radius:280px 280px 32px 32px;
+    overflow:hidden;
+    background:var(--yellow-soft);
+    box-shadow: 0 30px 60px rgba(42,17,54,.22);
+  }
+  .fresco-stage .slot,
+  .fresco-stage image-slot{
+    width:100%;height:100%;display:block;
+  }
+  .fresco-stage img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    display:block;
+  }
+  .fresco-ticket{
+    position:absolute;
+    top:auto;
+    bottom:50px;
+    right:-22px;
+    background:var(--acai);
+    color:var(--yellow);
+    font-family:'Anton',sans-serif;
+    font-size:24px;letter-spacing:.04em;
+    padding:18px 26px;
+    z-index:5;
+    clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
+    box-shadow: 0 12px 28px rgba(42,17,54,.25);
+  }
+  .fresco-caption{
+    text-align:center;
+    margin-top:56px;
+    font-family:'DM Sans',sans-serif;
+    font-weight:500;
+    font-size:13px;
+    letter-spacing:.36em;
+    color:var(--acai);
+  }
+
+  /* ===== Grid de produtos DENTRO do menu ===== */
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    width:100%;
+    max-width:760px;
+    max-height:320px;
+  }
+  .menu-card{
+    position:relative;
+    border-radius:24px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    padding:18px;
+    color:var(--acai);
+    transition:transform .25s ease;
+    aspect-ratio: 1 / 1;
+  }
+  .menu-card:hover{transform:translateY(-6px)}
+  .menu-card h3{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(22px,2vw,34px);
+    line-height:.95;
+    letter-spacing:.01em;
+    color:var(--yellow);
+    z-index:2;
+    position:relative;
+    text-shadow:
+      2px 2px 0 #fff,
+      -2px -2px 0 #fff,
+      2px -2px 0 #fff,
+      -2px 2px 0 #fff,
+      0 2px 0 #fff,
+      0 -2px 0 #fff,
+      2px 0 0 #fff,
+      -2px 0 0 #fff;
+  }
+  .menu-card.card-1 h3{
+    /* mantém sombra branca como os demais */
+  }
+  .menu-card.dark h3{color:var(--yellow)}
+  .menu-card img.card-photo{
+    position:absolute;
+    left:0;right:0;
+    top:18%;
+    bottom:0;
+    width:100%;
+    height:auto;
+    object-fit:cover;
+    object-position:top center;
+    z-index:1;
+    transform:scale(1.25);
+    transform-origin:top center;
+  }
+  .menu-card.card-1 img.card-photo{transform:scale(1.6);top:-60%}
+  .menu-card.card-2 img.card-photo{transform:scale(1.9);top:14%}
+  .menu-card.card-3 img.card-photo{transform:scale(1.45);top:18%}
+  .menu-card.card-4 img.card-photo{transform:scale(1.1);top:24%}
+  .menu-card .corner{
+    position:absolute;top:16px;right:16px;
+    width:28px;height:28px;border-radius:50%;
+    border:2px solid currentColor;
+    display:flex;align-items:center;justify-content:center;
+    color:inherit;
+    z-index:3;
+  }
+  .menu-card .corner::after{
+    content:"→";
+    font-size:15px;
+    color:inherit;
+  }
+  .card-1{background:var(--acai)}
+  .card-1 h3{color:var(--yellow)}
+  .card-2{background:#F9D8E4}
+  .card-3{background:#FFD27A}
+  .card-4{background:#E8DAF0}
+
+  /* ===== Footer ===== */
+  .site-footer{
+    margin-top:120px;
+    padding:60px 40px;
+    background:var(--yellow);
+    border-top:1px solid rgba(62,27,79,.12);
+    display:flex;align-items:center;
+    justify-content:center;
+    gap:32px;
+    flex-wrap:nowrap;
+  }
+  .footer-logo{
+    font-family:'Yellowtail',cursive;
+    font-size:54px;color:var(--acai);line-height:.9;
+    flex-shrink:0;
+  }
+  .footer-logo small{
+    display:block;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:9.5px;letter-spacing:.32em;
+    color:var(--acai);
+    text-align:center;
+    margin-top:-2px;
+  }
+  .footer-nav{
+    display:flex;gap:10px;flex-wrap:nowrap;
+  }
+  .footer-nav a{
+    border:2px solid var(--acai);
+    color:var(--acai);
+    padding:14px 24px;
+    border-radius:999px;
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.24em;
+    white-space:nowrap;
+    transition: background .2s ease, color .2s ease;
+  }
+  .footer-nav a:hover{background:var(--acai);color:var(--yellow)}
+  .footer-social{display:flex;gap:10px;flex-shrink:0}
+  .footer-social a{
+    width:40px;height:40px;border-radius:50%;
+    border:2px solid var(--acai);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--acai);
+    flex-shrink:0;
+  }
+  .footer-social svg{width:16px;height:16px}
+
+  /* ===== Seção Sobre ===== */
+  .sobre{
+    padding:120px 40px 60px;
+    background:var(--cream);
+  }
+  .sobre-card{
+    max-width:1280px;
+    margin:0 auto;
+    background:var(--acai);
+    border-radius:36px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap:0;
+    min-height:560px;
+  }
+  .sobre-photo{
+    position:relative;
+    background:#2A1136;
+    min-height:520px;
+  }
+  .sobre-photo image-slot{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .sobre-photo .sobre-photo-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+  .sobre-body{
+    padding:64px 60px;
+    display:flex;flex-direction:column;
+    justify-content:center;
+    gap:22px;
+    color:var(--cream);
+  }
+  .sobre-eyebrow{
+    font-family:'Yellowtail',cursive;
+    font-size:42px;
+    color:var(--yellow);
+    line-height:1;
+  }
+  .sobre-title{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(32px,3vw,52px);
+    line-height:1.05;
+    letter-spacing:.005em;
+    color:#fff;
+    max-width:520px;
+  }
+  .sobre-text{
+    font-family:'DM Sans',sans-serif;
+    font-weight:400;
+    font-size:15.5px;
+    line-height:1.7;
+    color:rgba(255,255,255,.85);
+    max-width:520px;
+  }
+  .sobre-features{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px 14px;
+    margin-top:10px;
+    max-width:520px;
+  }
+  .sobre-feature{
+    display:flex;align-items:center;gap:10px;
+    font-family:'DM Sans',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--cream);
+  }
+  .sobre-feature::before{
+    content:"";
+    flex-shrink:0;
+    width:22px;height:22px;
+    border-radius:50%;
+    background:var(--yellow);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233E1B4F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-repeat:no-repeat;
+    background-position:center;
+  }
+  @media (max-width: 900px){
+    .sobre-card{grid-template-columns:1fr}
+    .sobre-photo{min-height:340px}
+    .sobre-body{padding:40px 32px}
+  }
+
+  /* ===== Menu OVERLAY (top-sheet, cobre só parte de cima) ===== */
+  .menu-backdrop{
+    position:fixed;inset:0;z-index:85;
+    background:rgba(42,17,54,0);
+    opacity:0;pointer-events:none;
+    transition:opacity .35s ease, background .35s ease;
+  }
+  .menu-backdrop.show{opacity:1;pointer-events:auto;background:rgba(42,17,54,.25)}
+  .menu-panel{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:54vh;
+    background:var(--cream);
+    border-bottom-left-radius:32px;
+    border-bottom-right-radius:32px;
+    box-shadow: 0 24px 60px rgba(42,17,54,.25);
+    z-index:90;
+    display:flex;
+    gap:32px;
+    padding:24px 32px;
+    transform: translateY(-100%);
+    transition: transform .5s cubic-bezier(.86,0,.07,1);
+  }
+  .menu-panel.open{transform: translateY(0)}
+  .menu-cards-wrap{
+    flex:1;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding-top:8px;
+    min-width:0;
+  }
+  .menu-side{
+    width:340px;
+    flex-shrink:0;
+    display:flex;flex-direction:column;
+  }
+  .menu-panel-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    margin-bottom:28px;
+  }
+  .menu-panel .logo-mark{font-size:48px}
+  .menu-close{
+    background:transparent;border:0;cursor:pointer;
+    color:var(--acai);
+    padding:6px;
+    margin-top:6px;
+  }
+  .menu-close svg{width:36px;height:36px;display:block}
+  .menu-nav{
+    display:flex;flex-direction:column;
+    gap:10px;
+  }
+  .menu-nav a{
+    display:block;
+    border:2px solid var(--acai);
+    color:var(--acai);
+    text-align:center;
+    padding:14px 24px;
+    border-radius:999px;
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.26em;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .menu-nav a:hover{background:var(--acai);color:var(--yellow);transform:translateY(-2px)}
+  .menu-nav a.active{background:var(--acai);color:var(--yellow)}
+  .menu-panel .footer-social{
+    margin-top:10px;
+    justify-content:center;
+  }
+
+  /* tablet */
+  @media (max-width: 960px){
+    .hero-products{grid-template-columns:repeat(3,1fr);padding:0 16px;gap:10px}
+    .product .product-img,.product-1 .product-img,.product-2 .product-img,.product-3 .product-img{max-height:360px}
+    .featured-stamp,.fresco-stamp{width:96px;height:96px}
+    .featured-stamp .b,.fresco-stamp .b{font-size:40px}
+    .ticket{font-size:14px;padding:12px 14px;min-width:88px;bottom:24px}
+    .fresco-hero{grid-template-columns:1fr;padding:0 20px;gap:32px}
+    .fresco-side,.fresco-side.right{align-items:flex-start;text-align:left;padding-top:0}
+    .fresco-side.right .meta span{justify-content:flex-start}
+    .fresco-side.right .meta span::before{order:0}
+    .fresco-stage{aspect-ratio:4/5;border-radius:200px 200px 24px 24px}
+    .fresco-ticket{right:24px;font-size:18px;padding:14px 18px}
+    .site-header{padding:18px 22px 0}
+    .logo-mark{font-size:40px}
+    .menu-btn{font-size:28px}
+    .menu-btn .bars span{width:26px}
+    .menu-panel{flex-direction:column-reverse;padding:20px;overflow-y:auto;gap:20px}
+    .menu-side{width:100%}
+    .menu-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .menu-card{aspect-ratio:1/1.2}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER (somente o botão MENU, fixo) ===== -->
+<header class="site-header">
+  <div class="menu-wrap">
+    <button class="menu-btn" id="openMenu" aria-label="Abrir menu" aria-expanded="false">
+      <span class="bars"><span></span><span></span></span>
+      MENU
+    </button>
+  </div>
+</header>
+
+<!-- ===== MENU OVERLAY (full-screen com cards + nav) ===== -->
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-cards-wrap">
+    <div class="menu-grid">
+      <a class="menu-card card-1 dark" href="#">
+        <h3>AÇAÍ</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/acai-copo.png" alt="Açaí"/>
+      </a>
+      <a class="menu-card card-2" href="#">
+        <h3>MILK<br/>SHAKES</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/milkshake.png" alt="Milkshake"/>
+      </a>
+      <a class="menu-card card-3" href="#">
+        <h3>SORVETE</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/sorvete-casquinha.png" alt="Sorvete"/>
+      </a>
+      <a class="menu-card card-4" href="#sobre">
+        <h3>SOBRE<br/>NÓS</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/sobre-equipe.jpg" alt="Sobre a Brothers"/>
+      </a>
+    </div>
+  </div>
+  <div class="menu-side">
+    <div class="menu-panel-top">
+      <a href="#" class="logo-mark">
+        Brothers
+        <small>SORVETERIA · AÇAÍTERIA</small>
+      </a>
+      <button class="menu-close" id="closeMenu" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 15 12 9 18 15"></polyline>
+        </svg>
+      </button>
+    </div>
+    <nav class="menu-nav">
+      <a href="#top" class="active">HOME</a>
+      <a href="#sobre">SOBRE</a>
+      <a href="Contato.html">CONTATO</a>
+    </nav>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5c0-1.2.4-2 2-2h2V2.2C16.6 2 15.4 2 14.2 2c-3 0-5.2 1.8-5.2 5.1V10H6v4h3v8h4z"/></svg>
+      </a>
+      <a href="#" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10 10 0 0 0 3.7 16.2L2 22l5.9-1.7A10 10 0 1 0 20.5 3.5Zm-8.5 17a8.4 8.4 0 0 1-4.3-1.2l-.3-.2-3.5 1 .9-3.4-.2-.4A8.5 8.5 0 1 1 12 20.5Zm4.7-6.2c-.3-.1-1.5-.7-1.8-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.2.1-.3.2-.5 0-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.5-1.9-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5.1-.1 0-.3 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-logo">
+    <a href="#" class="logo-mark" aria-label="Brothers">
+      Brothers
+      <small>SORVETERIA · AÇAÍTERIA</small>
+    </a>
+  </div>
+  <div class="hero-bg-word">SORVETE</div>
+
+  <div class="featured-stamp" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <defs><path id="circle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" /></defs>
+      <text font-family="DM Sans" font-size="14" font-weight="700" letter-spacing="6" fill="#3E1B4F">
+        <textPath href="#circle">DESTAQUE · DESTAQUE · DESTAQUE · </textPath>
+      </text>
+    </svg>
+    <span class="b">B</span>
+  </div>
+
+  <div class="hero-products">
+
+    <div class="product product-1">
+      <img class="product-img" src="assets/acai-copo.png" alt="Açaí no copo com frutas e granola"/>
+      <div class="ticket">Açaí</div>
+    </div>
+
+    <div class="product product-2">
+      <img class="product-img" src="assets/milkshake.png" alt="Milkshake com chantilly"/>
+      <div class="ticket">MILK<br/>SHAKE</div>
+    </div>
+
+    <div class="product product-3">
+      <img class="product-img" src="assets/sorvete-casquinha.png" alt="Casquinha de sorvete com chocolate"/>
+      <div class="ticket">SORVETE<br/>ARTESANAL</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FRESCO ===== -->
+<section class="fresco">
+  <div class="fresco-word">FRESCO</div>
+
+  <div class="fresco-stamp" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <defs><path id="circle2" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" /></defs>
+      <text font-family="DM Sans" font-size="13" font-weight="700" letter-spacing="6" fill="#3E1B4F">
+        <textPath href="#circle2">NATURAL · ARTESANAL · NATURAL · ARTESANAL · </textPath>
+      </text>
+    </svg>
+    <span class="b">B</span>
+  </div>
+
+  <div class="fresco-hero">
+    <div class="fresco-side left">
+      <span class="kicker">Direto da fruta</span>
+      <h3 class="title">AÇAÍ BATIDO NA HORA</h3>
+      <p class="desc">Polpa pura, sem xarope nem corante. A cremosidade vem da própria fruta, do jeito que se come no Norte.</p>
+      <div class="meta">
+        <span>100% natural</span>
+        <span>Sem açúcar refinado</span>
+      </div>
+    </div>
+
+    <div class="fresco-stage">
+      <image-slot id="hero-feature" class="slot" shape="rounded" radius="0" placeholder="tigela de açaí premium com toppings"></image-slot>
+      <div class="fresco-ticket">AÇAÍ<br/>PREMIUM</div>
+    </div>
+
+    <div class="fresco-side right">
+      <span class="kicker">Topping fresco</span>
+      <h3 class="title">MORANGO, BANANA &amp; GRANOLA</h3>
+      <p class="desc">Cortados na hora, sem congelados. Combinações pensadas pra realçar o sabor do açaí, não esconder.</p>
+      <div class="meta">
+        <span>Frutas selecionadas</span>
+        <span>Granola artesanal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fresco-caption">AÇAÍ BATIDO NA HORA · MORANGO · BANANA · GRANOLA</div>
+</section>
+
+<!-- ===== MENU GRID antiga removida — agora vive dentro do menu overlay ===== -->
+
+<!-- ===== SEÇÃO SOBRE ===== -->
+<section class="sobre" id="sobre">
+  <div class="sobre-card">
+    <div class="sobre-photo">
+      <img src="assets/sobre-equipe.jpg" alt="Brothers Sorveteria — sabor da Amazônia" class="sobre-photo-img"/>
+    </div>
+    <div class="sobre-body">
+      <span class="sobre-eyebrow">Nossa história</span>
+      <h2 class="sobre-title">O SABOR QUE A AMAZÔNIA TEM PARA TE OFERECER</h2>
+      <p class="sobre-text">A Sorveteria e Açaíteria Brothers nasceu da paixão pelo sabor autêntico e pelo melhor da nossa região. Cada produto é feito com ingredientes selecionados e muito carinho, para que cada colherada seja uma experiência única — do coração da Amazônia para você.</p>
+      <div class="sobre-features">
+        <span class="sobre-feature">Sabor inigualável</span>
+        <span class="sobre-feature">Qualidade premium</span>
+        <span class="sobre-feature">Ingredientes naturais</span>
+        <span class="sobre-feature">Sabor regional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <a href="#" class="footer-logo">
+    Brothers
+    <small>SORVETERIA · AÇAÍTERIA</small>
+  </a>
+  <nav class="footer-nav">
+    <a href="#top">HOME</a>
+    <a href="#sobre">SOBRE</a>
+    <a href="Contato.html">CONTATO</a>
+  </nav>
+  <div class="footer-social">
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5c0-1.2.4-2 2-2h2V2.2C16.6 2 15.4 2 14.2 2c-3 0-5.2 1.8-5.2 5.1V10H6v4h3v8h4z"/></svg>
+    </a>
+    <a href="#" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A10 10 0 0 0 3.7 16.2L2 22l5.9-1.7A10 10 0 1 0 20.5 3.5Zm-8.5 17a8.4 8.4 0 0 1-4.3-1.2l-.3-.2-3.5 1 .9-3.4-.2-.4A8.5 8.5 0 1 1 12 20.5Zm4.7-6.2c-.3-.1-1.5-.7-1.8-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.2.1-.3.2-.5 0-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.5-1.9-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.2-.5.1-.1 0-.3 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.4.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3Z"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+  const panel = document.getElementById('menuPanel');
+  const backdrop = document.getElementById('menuBackdrop');
+  const openBtn = document.getElementById('openMenu');
+  const closeBtn = document.getElementById('closeMenu');
+
+  function openMenu(){
+    panel.classList.add('open');
+    backdrop.classList.add('show');
+    openBtn.setAttribute('aria-expanded','true');
+    panel.setAttribute('aria-hidden','false');
+  }
+  function closeMenu(){
+    panel.classList.remove('open');
+    backdrop.classList.remove('show');
+    openBtn.setAttribute('aria-expanded','false');
+    panel.setAttribute('aria-hidden','true');
+  }
+
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  panel.querySelectorAll('.menu-nav a, .menu-card').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+</body>
+</html>

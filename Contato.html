@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Contato — Brothers Sorveteria e Açaíteria</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow: #F5C518;
+    --yellow-soft: #FFE9A0;
+    --acai: #3E1B4F;
+    --acai-deep: #2A1136;
+    --cream: #FFFFFF;
+    --ink: #2A1136;
+    --rule: rgba(62,27,79,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  /* ===== HEADER ===== */
+  .site-header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:flex-end;align-items:flex-start;
+    padding:28px 40px 0;pointer-events:none;
+  }
+  .site-header > *{pointer-events:auto}
+  .logo-mark{
+    font-family:'Yellowtail',cursive;font-size:54px;color:var(--acai);line-height:.9;letter-spacing:-.5px;text-align:center;
+  }
+  .logo-mark small{
+    display:block;font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:9.5px;letter-spacing:.32em;color:var(--acai);text-align:center;margin-top:-4px;
+  }
+  .menu-btn{
+    display:flex;align-items:center;gap:14px;background:transparent;border:0;cursor:pointer;
+    font-family:'Anton',sans-serif;font-size:38px;letter-spacing:.04em;color:var(--acai);padding:6px 4px;
+  }
+  .menu-btn .bars{display:flex;flex-direction:column;gap:6px}
+  .menu-btn .bars span{display:block;width:34px;height:3px;background:var(--acai);border-radius:2px}
+
+  /* ===== HERO ===== */
+  .contato-hero{
+    position:relative;
+    padding:70px 60px 30px;
+    overflow:hidden;
+    text-align:center;
+    min-height:560px;
+  }
+  .hero-logo{position:relative;z-index:3;text-align:center;margin-bottom:180px}
+  .hero-logo .logo-mark{font-size:64px}
+  .hero-logo .logo-mark small{font-size:11px;letter-spacing:.36em}
+  .hero-bg-word{
+    position:absolute;
+    left:50%;top:54%;
+    transform:translate(-50%,-50%);
+    font-family:'Anton',sans-serif;
+    font-size:clamp(200px,28vw,480px);
+    color:var(--yellow);
+    letter-spacing:-.02em;line-height:.85;
+    z-index:1;white-space:nowrap;user-select:none;
+  }
+  .contato-eyebrow{
+    position:relative;z-index:2;
+    display:inline-block;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--acai);
+    padding-bottom:8px;
+    border-bottom:1.5px solid var(--acai);
+    margin-bottom:24px;
+  }
+  .contato-title{
+    position:relative;z-index:2;
+    font-family:'Anton',sans-serif;
+    font-size:clamp(54px,7vw,108px);
+    line-height:.92;letter-spacing:.005em;
+    color:var(--acai);
+    max-width:1100px;margin:0 auto;
+  }
+  .contato-title em{
+    font-family:'Yellowtail',cursive;font-style:normal;
+    color:var(--acai);
+    font-size:.85em;line-height:.85;
+    display:inline-block;
+    transform:translateY(.08em);
+    margin:0 .04em;
+  }
+  .contato-sub{
+    position:relative;z-index:2;
+    margin:28px auto 0;
+    max-width:560px;
+    font-family:'DM Sans',sans-serif;font-weight:400;
+    font-size:16px;line-height:1.65;
+    color:rgba(42,17,54,.78);
+  }
+
+  /* ===== Régua / index do conteúdo ===== */
+  .section-rule{
+    max-width:1280px;margin:80px auto 0;
+    padding:0 60px;
+    display:flex;align-items:center;gap:18px;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--acai);
+  }
+  .section-rule .num{
+    font-family:'Anton',sans-serif;font-weight:400;font-size:14px;letter-spacing:.04em;
+  }
+  .section-rule .line{flex:1;height:1px;background:var(--rule)}
+
+  /* ===== MAIN: Form + Side ===== */
+  .contato-main{
+    max-width:1280px;margin:32px auto 0;
+    padding:0 60px 120px;
+    display:grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap:96px;
+  }
+
+  /* FORM card */
+  .form-wrap{
+    background:var(--yellow-soft);
+    border-radius:32px;
+    padding:56px 52px;
+    display:flex;flex-direction:column;gap:14px;
+    position:relative;
+    overflow:hidden;
+  }
+  .form-wrap::before{
+    content:"";
+    position:absolute;top:-60px;right:-60px;
+    width:220px;height:220px;border-radius:50%;
+    background:var(--yellow);
+    opacity:.55;
+    pointer-events:none;
+  }
+  .form-wrap > *{position:relative;z-index:1}
+  .form-h{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(36px,4vw,56px);
+    line-height:.95;letter-spacing:.005em;
+    color:var(--acai);
+    margin-bottom:8px;
+  }
+  .form-h em{
+    font-family:'Yellowtail',cursive;font-style:normal;color:var(--acai);
+    font-size:.7em;display:block;margin-bottom:18px;
+  }
+  .form-note{
+    font-family:'DM Sans',sans-serif;font-size:14px;
+    color:rgba(42,17,54,.7);line-height:1.6;
+    margin-bottom:18px;max-width:480px;
+  }
+
+  form.editorial{display:flex;flex-direction:column;gap:6px}
+  .field{
+    position:relative;
+    display:flex;flex-direction:column;
+    border-bottom:1.5px solid rgba(62,27,79,.28);
+    padding:18px 0 12px;
+    transition:border-color .25s ease;
+  }
+  .field:focus-within{border-color:var(--acai)}
+  .field label{
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;
+    color:rgba(42,17,54,.55);
+    margin-bottom:10px;
+    transition:color .25s ease;
+  }
+  .field:focus-within label{color:var(--acai)}
+  .field input,
+  .field textarea{
+    background:transparent;border:0;outline:none;
+    font-family:'DM Sans',sans-serif;font-weight:500;
+    font-size:18px;color:var(--ink);
+    padding:0;width:100%;
+    resize:none;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder{color:rgba(42,17,54,.32);font-weight:400}
+  .field textarea{min-height:90px;line-height:1.55;font-family:'DM Sans',sans-serif}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .field-row .field{border-bottom:1.5px solid rgba(62,27,79,.28)}
+
+  .submit-row{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:36px;
+    gap:24px;flex-wrap:wrap;
+  }
+  .submit-btn{
+    background:var(--acai);color:var(--yellow);
+    border:0;cursor:pointer;
+    font-family:'Anton',sans-serif;font-size:18px;letter-spacing:.08em;
+    padding:20px 36px;border-radius:999px;
+    display:inline-flex;align-items:center;gap:14px;
+    transition:transform .25s ease, background .25s ease, color .25s ease;
+  }
+  .submit-btn:hover{background:var(--yellow);color:var(--acai);transform:translateY(-2px)}
+  .submit-btn .arrow{
+    display:inline-flex;width:30px;height:30px;border-radius:50%;
+    background:var(--yellow);color:var(--acai);
+    align-items:center;justify-content:center;
+    transition:background .25s ease, color .25s ease;
+  }
+  .submit-btn:hover .arrow{background:var(--acai);color:var(--yellow)}
+  .submit-btn .arrow svg{width:14px;height:14px}
+  .form-fine{
+    font-family:'DM Sans',sans-serif;font-size:11.5px;letter-spacing:.06em;
+    color:rgba(42,17,54,.55);max-width:260px;line-height:1.5;
+  }
+  .form-success{
+    display:none;margin-top:18px;
+    padding:14px 18px;background:var(--yellow-soft);
+    color:var(--acai);border-radius:10px;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.04em;
+  }
+  .form-success.show{display:block}
+
+  /* ===== SIDE: redes + info ===== */
+  .side{
+    display:flex;flex-direction:column;gap:56px;
+    padding-top:8px;
+  }
+  .side-h{
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--acai);
+    padding-bottom:12px;border-bottom:1.5px solid var(--acai);
+    margin-bottom:18px;
+  }
+
+  /* Redes — listas tipográficas */
+  .social-list{display:flex;flex-direction:column}
+  .social-link{
+    display:flex;align-items:center;gap:18px;
+    padding:18px 0;
+    border-bottom:1px solid var(--rule);
+    transition:padding .3s ease;
+  }
+  .social-link:last-child{border-bottom:0}
+  .social-link:hover{padding-left:8px}
+  .social-link .lbl{
+    flex:1;
+    display:flex;flex-direction:column;gap:3px;
+  }
+  .social-link .lbl strong{
+    font-family:'Anton',sans-serif;font-size:24px;letter-spacing:.04em;color:var(--acai);
+  }
+  .social-link .lbl span{
+    font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.04em;
+    color:rgba(42,17,54,.6);
+  }
+  .social-link .go{
+    font-family:'Anton',sans-serif;font-size:22px;color:var(--acai);
+    opacity:.4;transition:opacity .25s ease, transform .25s ease;
+  }
+  .social-link:hover .go{opacity:1;transform:translateX(4px)}
+
+  /* Info bloco */
+  .info-list{display:flex;flex-direction:column;gap:24px}
+  .info-row{
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .info-row strong{
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;
+    color:rgba(42,17,54,.55);
+  }
+  .info-row span{
+    font-family:'Anton',sans-serif;
+    font-size:24px;letter-spacing:.02em;
+    color:var(--acai);line-height:1.2;
+  }
+  .info-row span.normal{
+    font-family:'DM Sans',sans-serif;font-weight:500;
+    font-size:17px;letter-spacing:0;line-height:1.5;
+  }
+
+  /* ===== FAIXA AMARELA: chamada final ===== */
+  .strip{
+    background:var(--yellow);
+    color:var(--acai);
+    padding:60px 60px;
+    overflow:hidden;
+  }
+  .strip-inner{
+    max-width:1280px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
+  }
+  .strip-text{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(32px,4vw,60px);
+    line-height:.95;letter-spacing:.005em;
+    color:var(--acai);
+    max-width:780px;
+  }
+  .strip-text em{
+    font-family:'Yellowtail',cursive;font-style:normal;font-size:.85em;
+  }
+  .strip-cta{
+    display:inline-flex;align-items:center;gap:16px;
+    background:var(--acai);color:var(--yellow);
+    padding:22px 32px;border-radius:999px;
+    font-family:'Anton',sans-serif;font-size:20px;letter-spacing:.06em;
+    transition:transform .25s ease;
+  }
+  .strip-cta:hover{transform:translateY(-2px)}
+  .strip-cta svg{width:18px;height:18px}
+
+  /* ===== FOOTER ===== */
+  .site-footer{
+    padding:60px 40px;
+    background:var(--cream);
+    border-top:1px solid var(--rule);
+    display:flex;align-items:center;justify-content:center;
+    gap:32px;flex-wrap:nowrap;
+  }
+  .footer-logo{font-family:'Yellowtail',cursive;font-size:54px;color:var(--acai);line-height:.9;flex-shrink:0}
+  .footer-logo small{display:block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.32em;color:var(--acai);text-align:center;margin-top:-2px}
+  .footer-nav{display:flex;gap:10px;flex-wrap:nowrap}
+  .footer-nav a{
+    border:2px solid var(--acai);color:var(--acai);
+    padding:14px 24px;border-radius:999px;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:11px;letter-spacing:.24em;white-space:nowrap;
+    transition:background .2s ease,color .2s ease;
+  }
+  .footer-nav a:hover,.footer-nav a.active{background:var(--acai);color:var(--yellow)}
+  .footer-mini{
+    display:flex;gap:18px;flex-shrink:0;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:11px;letter-spacing:.22em;color:var(--acai);
+  }
+  .footer-mini a{position:relative}
+  .footer-mini a::after{
+    content:"";position:absolute;left:0;right:0;bottom:-4px;
+    height:1.5px;background:var(--acai);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .footer-mini a:hover::after{transform:scaleX(1)}
+
+  /* ===== MENU OVERLAY ===== */
+  .menu-backdrop{
+    position:fixed;inset:0;z-index:85;
+    background:rgba(42,17,54,0);
+    opacity:0;pointer-events:none;
+    transition:opacity .35s ease, background .35s ease;
+  }
+  .menu-backdrop.show{opacity:1;pointer-events:auto;background:rgba(42,17,54,.25)}
+  .menu-panel{
+    position:fixed;top:0;left:0;right:0;
+    height:54vh;
+    background:var(--cream);
+    border-bottom-left-radius:32px;
+    border-bottom-right-radius:32px;
+    box-shadow: 0 24px 60px rgba(42,17,54,.25);
+    z-index:90;display:flex;gap:32px;padding:24px 32px;
+    transform: translateY(-100%);
+    transition: transform .5s cubic-bezier(.86,0,.07,1);
+  }
+  .menu-panel.open{transform: translateY(0)}
+  .menu-cards-wrap{flex:1;display:flex;align-items:flex-start;justify-content:center;padding-top:8px;min-width:0}
+  .menu-side{width:340px;flex-shrink:0;display:flex;flex-direction:column}
+  .menu-panel-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
+  .menu-panel .logo-mark{font-size:48px}
+  .menu-close{background:transparent;border:0;cursor:pointer;color:var(--acai);padding:6px;margin-top:6px}
+  .menu-close svg{width:36px;height:36px;display:block}
+  .menu-nav{display:flex;flex-direction:column;gap:10px}
+  .menu-nav a{
+    display:block;border:2px solid var(--acai);color:var(--acai);
+    text-align:center;padding:14px 24px;border-radius:999px;
+    font-family:'DM Sans',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.26em;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .menu-nav a:hover{background:var(--acai);color:var(--yellow);transform:translateY(-2px)}
+  .menu-nav a.active{background:var(--acai);color:var(--yellow)}
+  .menu-side .menu-mini{
+    display:flex;gap:16px;justify-content:center;margin-top:18px;
+    font-family:'DM Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.22em;color:var(--acai);
+  }
+  .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:760px;max-height:320px}
+  .menu-card{
+    position:relative;border-radius:24px;overflow:hidden;
+    display:flex;flex-direction:column;padding:18px;
+    color:var(--acai);transition:transform .25s ease;
+    aspect-ratio: 1 / 1;
+  }
+  .menu-card:hover{transform:translateY(-6px)}
+  .menu-card h3{
+    font-family:'Anton',sans-serif;font-size:clamp(22px,2vw,34px);
+    line-height:.95;letter-spacing:.01em;color:var(--yellow);
+    z-index:2;position:relative;
+    text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,2px 0 0 #fff,-2px 0 0 #fff;
+  }
+  .menu-card img.card-photo{
+    position:absolute;left:0;right:0;top:18%;bottom:0;
+    width:100%;height:auto;object-fit:cover;object-position:top center;
+    z-index:1;transform:scale(1.25);transform-origin:top center;
+  }
+  .menu-card.card-1 img.card-photo{transform:scale(1.6);top:-60%}
+  .menu-card.card-2 img.card-photo{transform:scale(1.9);top:14%}
+  .menu-card.card-3 img.card-photo{transform:scale(1.45);top:18%}
+  .menu-card.card-4 img.card-photo{transform:scale(1.1);top:24%}
+  .menu-card .corner{
+    position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;
+    border:2px solid currentColor;display:flex;align-items:center;justify-content:center;
+    color:inherit;z-index:3;
+  }
+  .menu-card .corner::after{content:"→";font-size:15px;color:inherit}
+  .card-1{background:var(--acai)} .card-1 h3{color:var(--yellow)}
+  .card-2{background:#F9D8E4}
+  .card-3{background:#FFD27A}
+  .card-4{background:#E8DAF0}
+
+  /* Responsivo */
+  @media (max-width: 980px){
+    .contato-hero{padding:110px 24px 20px}
+    .contato-main{grid-template-columns:1fr;gap:60px;padding:0 24px 80px}
+    .section-rule{padding:0 24px;margin-top:60px}
+    .field-row{grid-template-columns:1fr;gap:0}
+    .strip{padding:48px 24px}
+    .strip-inner{flex-direction:column;align-items:flex-start;gap:24px}
+    .site-header{padding:18px 22px 0}
+    .logo-mark{font-size:40px}
+    .menu-btn{font-size:28px}
+    .menu-btn .bars span{width:26px}
+    .site-footer{flex-direction:column;gap:24px;padding:40px 20px}
+    .menu-panel{flex-direction:column-reverse;padding:20px;overflow-y:auto;gap:20px;height:auto;max-height:90vh}
+    .menu-side{width:100%}
+    .menu-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="menu-wrap">
+    <button class="menu-btn" id="openMenu" aria-label="Abrir menu" aria-expanded="false">
+      <span class="bars"><span></span><span></span></span>
+      MENU
+    </button>
+  </div>
+</header>
+
+<!-- MENU OVERLAY -->
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-cards-wrap">
+    <div class="menu-grid">
+      <a class="menu-card card-1 dark" href="Brothers Sorveteria.html">
+        <h3>AÇAÍ</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/acai-copo.png" alt="Açaí"/>
+      </a>
+      <a class="menu-card card-2" href="Brothers Sorveteria.html">
+        <h3>MILK<br/>SHAKES</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/milkshake.png" alt="Milkshake"/>
+      </a>
+      <a class="menu-card card-3" href="Brothers Sorveteria.html">
+        <h3>SORVETE</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/sorvete-casquinha.png" alt="Sorvete"/>
+      </a>
+      <a class="menu-card card-4" href="Brothers Sorveteria.html#sobre">
+        <h3>SOBRE<br/>NÓS</h3>
+        <span class="corner"></span>
+        <img class="card-photo" src="assets/sobre-equipe.jpg" alt="Sobre a Brothers"/>
+      </a>
+    </div>
+  </div>
+  <div class="menu-side">
+    <div class="menu-panel-top">
+      <a href="Brothers Sorveteria.html" class="logo-mark">
+        Brothers
+        <small>SORVETERIA · AÇAÍTERIA</small>
+      </a>
+      <button class="menu-close" id="closeMenu" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 15 12 9 18 15"></polyline>
+        </svg>
+      </button>
+    </div>
+    <nav class="menu-nav">
+      <a href="Brothers Sorveteria.html">HOME</a>
+      <a href="Brothers Sorveteria.html#sobre">SOBRE</a>
+      <a href="Contato.html" class="active">CONTATO</a>
+    </nav>
+    <div class="menu-mini">
+      <a href="https://instagram.com/brotherssorveteria" target="_blank">INSTAGRAM</a>
+      <a href="https://wa.me/5500000000000" target="_blank">WHATSAPP</a>
+      <a href="https://tiktok.com/@brotherssorveteria" target="_blank">TIKTOK</a>
+    </div>
+  </div>
+</aside>
+
+<!-- HERO -->
+<section class="contato-hero">
+  <div class="hero-bg-word">CONTATO</div>
+  <div class="hero-logo">
+    <a href="Brothers Sorveteria.html" class="logo-mark" aria-label="Brothers">
+      Brothers
+      <small>SORVETERIA · AÇAÍTERIA</small>
+    </a>
+  </div>
+  <span class="contato-eyebrow">Fala com a gente</span>
+  <h1 class="contato-title">A GENTE ADORA<br/><em>um papo</em> DOCE.</h1>
+  <p class="contato-sub">Encomendas para festas, dúvidas, parcerias, ou só pra mandar um “oi com cobertura de chocolate”. Escolhe abaixo como quer falar.</p>
+</section>
+
+<!-- Rule -->
+<div class="section-rule">
+  <span class="num">01</span>
+  <span>Envie uma mensagem</span>
+  <span class="line"></span>
+  <span class="num">02</span>
+  <span>Outros canais</span>
+</div>
+
+<!-- MAIN -->
+<section class="contato-main">
+
+  <!-- FORM editorial -->
+  <div class="form-wrap">
+    <h2 class="form-h"><em>Escreva pra gente.</em>SEU RECADO,<br/>NOSSA RESPOSTA.</h2>
+    <p class="form-note">Preenche aí embaixo. A gente lê tudo e responde no e-mail que você deixar — geralmente no mesmo dia útil.</p>
+
+    <form class="editorial" id="contatoForm"
+          action="mailto:contato@brotherssorveteria.com.br"
+          method="POST"
+          enctype="text/plain">
+
+      <div class="field">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="Nome" placeholder="Como podemos te chamar?" required/>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="E-mail" placeholder="voce@email.com" required/>
+        </div>
+        <div class="field">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="Telefone" placeholder="(00) 00000-0000"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="assunto">Assunto</label>
+        <input type="text" id="assunto" name="Assunto" placeholder="Encomenda, dúvida, parceria…"/>
+      </div>
+
+      <div class="field">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="Mensagem" placeholder="Conta pra gente o que tá precisando…" required></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button class="submit-btn" type="submit">
+          ENVIAR
+          <span class="arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </button>
+        <p class="form-fine">Ao enviar, abrimos seu cliente de e-mail com a mensagem pronta. Sem cadastro, sem spam.</p>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        ✓ Tudo certo! Seu e-mail vai abrir com a mensagem pronta para enviar.
+      </div>
+    </form>
+  </div>
+
+  <!-- SIDE -->
+  <aside class="side">
+
+    <div>
+      <h3 class="side-h">Redes sociais</h3>
+      <div class="social-list">
+        <a class="social-link" href="https://wa.me/5500000000000" target="_blank">
+          <span class="lbl">
+            <strong>WHATSAPP</strong>
+            <span>resposta em poucos minutos</span>
+          </span>
+          <span class="go">→</span>
+        </a>
+        <a class="social-link" href="https://instagram.com/brotherssorveteria" target="_blank">
+          <span class="lbl">
+            <strong>INSTAGRAM</strong>
+            <span>@brotherssorveteria</span>
+          </span>
+          <span class="go">→</span>
+        </a>
+        <a class="social-link" href="https://tiktok.com/@brotherssorveteria" target="_blank">
+          <span class="lbl">
+            <strong>TIKTOK</strong>
+            <span>@brotherssorveteria</span>
+          </span>
+          <span class="go">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="side-h">Encontre a gente</h3>
+      <div class="info-list">
+        <div class="info-row">
+          <strong>E-mail</strong>
+          <span class="normal">contato@brotherssorveteria.com.br</span>
+        </div>
+        <div class="info-row">
+          <strong>Telefone</strong>
+          <span>(00) 00000-0000</span>
+        </div>
+        <div class="info-row">
+          <strong>Horário</strong>
+          <span>Seg a Dom <br/>14h às 23h</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</section>
+
+<!-- FAIXA AMARELA -->
+<section class="strip">
+  <div class="strip-inner">
+    <p class="strip-text"><em>É pra festa?</em><br/>FALA DIRETO NO WHATSAPP.</p>
+    <a class="strip-cta" href="https://wa.me/5500000000000" target="_blank">
+      ABRIR WHATSAPP
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <a href="Brothers Sorveteria.html" class="footer-logo">
+    Brothers
+    <small>SORVETERIA · AÇAÍTERIA</small>
+  </a>
+  <nav class="footer-nav">
+    <a href="Brothers Sorveteria.html">HOME</a>
+    <a href="Brothers Sorveteria.html#sobre">SOBRE</a>
+    <a href="Contato.html" class="active">CONTATO</a>
+  </nav>
+  <div class="footer-mini">
+    <a href="https://instagram.com/brotherssorveteria" target="_blank">INSTAGRAM</a>
+    <a href="https://wa.me/5500000000000" target="_blank">WHATSAPP</a>
+    <a href="https://tiktok.com/@brotherssorveteria" target="_blank">TIKTOK</a>
+  </div>
+</footer>
+
+<script>
+  // Menu
+  const panel = document.getElementById('menuPanel');
+  const backdrop = document.getElementById('menuBackdrop');
+  const openBtn = document.getElementById('openMenu');
+  const closeBtn = document.getElementById('closeMenu');
+  function openMenu(){
+    panel.classList.add('open');
+    backdrop.classList.add('show');
+    openBtn.setAttribute('aria-expanded','true');
+    panel.setAttribute('aria-hidden','false');
+  }
+  function closeMenu(){
+    panel.classList.remove('open');
+    backdrop.classList.remove('show');
+    openBtn.setAttribute('aria-expanded','false');
+    panel.setAttribute('aria-hidden','true');
+  }
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  backdrop.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  panel.querySelectorAll('.menu-nav a, .menu-card').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Form feedback
+  const form = document.getElementById('contatoForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', () => {
+    success.classList.add('show');
+    setTimeout(() => success.classList.remove('show'), 6000);
+  });
+</script>
+
+</body>
+</html>
