@@ -1,18 +1,43 @@
-# OS
+# ===== OS =====
 Thumbs.db
 ehthumbs.db
 Desktop.ini
 .DS_Store
+$RECYCLE.BIN/
 
-# Editors
+# ===== Editors / IDEs =====
 .vscode/
 .idea/
 *.swp
+*.swo
 *~
+.history/
+.project
+.settings/
 
-# Logs
+# ===== Logs / runtime =====
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Node
+# ===== Node (caso futuramente use build) =====
 node_modules/
+.npm
+.pnpm-store/
+.cache/
+dist/
+build/
+out/
+.tmp/
+
+# ===== Env / segredos =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ===== Sidecar do componente image-slot =====
+.image-slots.state.json

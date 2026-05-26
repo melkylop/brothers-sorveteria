@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /.image-slots.state.json
+
+Sitemap: https://brotherssorveteria.com.br/sitemap.xml

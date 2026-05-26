@@ -2,8 +2,45 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Brothers — Sorveteria e Açaíteria</title>
+<title>Brothers — Sorveteria e Açaíteria | Sorvete artesanal direto da Amazônia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Brothers Sorveteria e Açaíteria — sorvete artesanal e açaí batido na hora, direto do coração da Amazônia. Conheça nossa história e faça sua encomenda." />
+<meta name="keywords" content="sorveteria, açaí, açaíteria, sorvete artesanal, milkshake, brothers, amazônia" />
+<meta name="author" content="Brothers Sorveteria e Açaíteria" />
+<meta name="robots" content="index,follow" />
+<meta name="theme-color" content="#3E1B4F" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="canonical" href="https://brotherssorveteria.com.br/" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="manifest.json" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Brothers Sorveteria e Açaíteria" />
+<meta property="og:title" content="Brothers — Sorveteria e Açaíteria" />
+<meta property="og:description" content="Sorvete artesanal e açaí batido na hora — direto do coração da Amazônia." />
+<meta property="og:image" content="assets/sobre-equipe.jpg" />
+<meta property="og:url" content="https://brotherssorveteria.com.br/" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Brothers — Sorveteria e Açaíteria" />
+<meta name="twitter:description" content="Sorvete artesanal e açaí batido na hora — direto do coração da Amazônia." />
+<meta name="twitter:image" content="assets/sobre-equipe.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "IceCreamShop",
+  "name": "Brothers Sorveteria e Açaíteria",
+  "description": "Sorveteria e açaíteria artesanal com sabor direto da Amazônia.",
+  "url": "https://brotherssorveteria.com.br/",
+  "image": "https://brotherssorveteria.com.br/assets/sobre-equipe.jpg",
+  "servesCuisine": ["Sorvete", "Açaí", "Milkshake"],
+  "openingHours": "Mo-Su 14:00-23:00",
+  "priceRange": "$$"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -604,9 +641,118 @@
     .menu-grid{grid-template-columns:repeat(2,1fr);gap:14px}
     .menu-card{aspect-ratio:1/1.2}
   }
+
+  /* ===== Acessibilidade ===== */
+  .skip-link{
+    position:absolute;left:-9999px;top:0;background:var(--acai);color:var(--yellow);
+    padding:12px 18px;border-radius:0 0 12px 0;font-weight:700;letter-spacing:.18em;
+    font-size:12px;z-index:9999;font-family:'DM Sans',sans-serif;text-decoration:none;
+  }
+  .skip-link:focus{left:0}
+  :focus-visible{outline:3px solid var(--acai);outline-offset:3px;border-radius:6px}
+  .menu-btn:focus-visible,.menu-close:focus-visible{outline-offset:6px}
+
+  /* ===== Mobile pequeno (até 480px) ===== */
+  @media (max-width: 480px){
+    .site-header{padding:14px 14px 0}
+    .menu-btn{font-size:24px}
+    .menu-btn .bars span{width:22px;height:2.5px}
+    .hero{padding:40px 0 40px;min-height:auto}
+    .hero-logo .logo-mark{font-size:50px}
+    .hero-logo .logo-mark small{font-size:9px}
+    .hero-bg-word{font-size:clamp(150px,32vw,260px);top:160px}
+    .featured-stamp{width:72px;height:72px;top:70px;right:14px}
+    .featured-stamp .b{font-size:28px}
+    .hero-products{padding:0 10px;gap:6px}
+    .product .product-img,
+    .product-1 .product-img,
+    .product-2 .product-img,
+    .product-3 .product-img{max-height:240px}
+    .product-2 .product-img{transform:scale(1.3)}
+    .ticket{font-size:11px;padding:8px 10px;min-width:70px;left:-4px;bottom:16px}
+    .product-2 .ticket{left:-4px;bottom:60px}
+    .fresco{padding:60px 0 40px}
+    .fresco-stamp{width:80px;height:80px;top:60px;left:14px}
+    .fresco-stamp .b{font-size:34px}
+    .fresco-hero{padding:0 16px;gap:24px}
+    .fresco-stage{aspect-ratio:4/5;border-radius:140px 140px 20px 20px}
+    .fresco-ticket{right:8px;font-size:16px;padding:12px 14px;bottom:20px}
+    .menu-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .menu-card{padding:14px}
+    .menu-card h3{font-size:20px}
+    .menu-card .corner{width:24px;height:24px;top:10px;right:10px}
+    .menu-panel{height:auto;max-height:92vh;padding:16px}
+    .menu-side{width:100%}
+    .sobre{padding:60px 16px 30px}
+    .sobre-card{border-radius:24px}
+    .sobre-body{padding:32px 24px;gap:16px}
+    .sobre-title{font-size:28px}
+    .sobre-text{font-size:14.5px}
+    .site-footer{flex-direction:column;gap:18px;padding:36px 18px;margin-top:60px}
+    .footer-nav{flex-wrap:wrap;justify-content:center;gap:8px}
+    .footer-nav a{font-size:10px;padding:11px 16px;letter-spacing:.2em}
+    .footer-logo{font-size:44px}
+  }
+
+  /* ===== Tablet retrato (481px–768px) ===== */
+  @media (min-width: 481px) and (max-width: 768px){
+    .product .product-img,
+    .product-1 .product-img,
+    .product-2 .product-img,
+    .product-3 .product-img{max-height:300px}
+    .product-2 .product-img{transform:scale(1.4)}
+  }
+
+  /* ===== Tablet paisagem / desktop pequeno (768px–1024px) ===== */
+  @media (min-width: 768px) and (max-width: 1024px){
+    .hero-products{padding:0 24px}
+    .product .product-img,
+    .product-1 .product-img,
+    .product-2 .product-img,
+    .product-3 .product-img{max-height:520px}
+  }
+
+  /* ===== TV / monitores muito grandes (≥1920px) ===== */
+  @media (min-width: 1920px){
+    .hero-products{max-width:1800px}
+    .fresco-hero{max-width:1400px}
+    .sobre-card{max-width:1500px}
+    .site-footer{padding:80px 40px}
+  }
+
+  /* ===== Touch targets — mínimo 44x44px ===== */
+  @media (hover: none) and (pointer: coarse){
+    .menu-nav a,.footer-nav a{min-height:44px;display:flex;align-items:center;justify-content:center}
+    .menu-btn,.menu-close{min-height:44px;min-width:44px}
+    .footer-social a{width:44px;height:44px}
+    .menu-card:hover{transform:none}
+    .menu-nav a:hover{transform:none}
+  }
+
+  /* ===== Reduced motion ===== */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+
+  /* ===== Print ===== */
+  @media print{
+    .site-header,.menu-panel,.menu-backdrop,.lgpd-banner,
+    .featured-stamp,.fresco-stamp{display:none !important}
+    .hero,.fresco,.sobre{padding:20px 0 !important;min-height:auto !important}
+    .hero-bg-word,.fresco-word{display:none}
+    body{color:#000;background:#fff}
+    a{color:#000;text-decoration:underline}
+  }
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
 
 <!-- ===== HEADER (somente o botão MENU, fixo) ===== -->
 <header class="site-header">
@@ -677,6 +823,7 @@
 </aside>
 
 <!-- ===== HERO ===== -->
+<main id="main">
 <section class="hero">
   <div class="hero-logo">
     <a href="#" class="logo-mark" aria-label="Brothers">
@@ -782,16 +929,19 @@
   </div>
 </section>
 
+</main>
+
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <a href="#" class="footer-logo">
     Brothers
     <small>SORVETERIA · AÇAÍTERIA</small>
   </a>
-  <nav class="footer-nav">
+  <nav class="footer-nav" aria-label="Rodapé">
     <a href="#top">HOME</a>
     <a href="#sobre">SOBRE</a>
     <a href="Contato.html">CONTATO</a>
+    <a href="privacidade.html">PRIVACIDADE</a>
   </nav>
   <div class="footer-social">
     <a href="#" aria-label="Instagram">
@@ -831,6 +981,8 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   panel.querySelectorAll('.menu-nav a, .menu-card').forEach(a => a.addEventListener('click', closeMenu));
 </script>
+
+<script src="lgpd.js" defer></script>
 
 </body>
 </html>

@@ -4,6 +4,44 @@
 <meta charset="UTF-8" />
 <title>Contato — Brothers Sorveteria e Açaíteria</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Fale com a Brothers Sorveteria e Açaíteria — encomendas para festas, dúvidas, parcerias ou só pra mandar um oi com cobertura de chocolate." />
+<meta name="keywords" content="contato brothers, sorveteria contato, encomenda sorvete, encomenda açaí, festa, parceria" />
+<meta name="author" content="Brothers Sorveteria e Açaíteria" />
+<meta name="robots" content="index,follow" />
+<meta name="theme-color" content="#3E1B4F" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="canonical" href="https://brotherssorveteria.com.br/Contato.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="manifest" href="manifest.json" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Brothers Sorveteria e Açaíteria" />
+<meta property="og:title" content="Contato — Brothers Sorveteria e Açaíteria" />
+<meta property="og:description" content="Encomendas, dúvidas e parcerias — fala com a gente." />
+<meta property="og:image" content="assets/sobre-equipe.jpg" />
+<meta property="og:url" content="https://brotherssorveteria.com.br/Contato.html" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contato — Brothers Sorveteria e Açaíteria" />
+<meta name="twitter:description" content="Encomendas, dúvidas e parcerias — fala com a gente." />
+<meta name="twitter:image" content="assets/sobre-equipe.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contato Brothers Sorveteria",
+  "url": "https://brotherssorveteria.com.br/Contato.html",
+  "inLanguage": "pt-BR",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Brothers Sorveteria e Açaíteria",
+    "url": "https://brotherssorveteria.com.br/"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -438,9 +476,97 @@
     .menu-side{width:100%}
     .menu-grid{grid-template-columns:repeat(2,1fr);gap:14px}
   }
+
+  /* ===== Acessibilidade ===== */
+  .skip-link{
+    position:absolute;left:-9999px;top:0;background:var(--acai);color:var(--yellow);
+    padding:12px 18px;border-radius:0 0 12px 0;font-weight:700;letter-spacing:.18em;
+    font-size:12px;z-index:9999;font-family:'DM Sans',sans-serif;text-decoration:none;
+  }
+  .skip-link:focus{left:0}
+  :focus-visible{outline:3px solid var(--acai);outline-offset:3px;border-radius:6px}
+  .field input:focus-visible,.field textarea:focus-visible{outline:none}
+  .submit-btn:focus-visible{outline-offset:4px}
+
+  /* ===== Mobile pequeno (até 480px) ===== */
+  @media (max-width: 480px){
+    .site-header{padding:14px 14px 0}
+    .menu-btn{font-size:24px}
+    .menu-btn .bars span{width:22px;height:2.5px}
+    .contato-hero{padding:80px 18px 20px;min-height:auto}
+    .hero-logo{margin-bottom:100px}
+    .hero-logo .logo-mark{font-size:44px}
+    .hero-bg-word{font-size:clamp(120px,38vw,200px)}
+    .contato-title{font-size:42px}
+    .contato-sub{font-size:14px;margin:20px auto 0}
+    .section-rule{padding:0 18px;font-size:9.5px;gap:10px}
+    .contato-main{grid-template-columns:1fr;gap:40px;padding:0 18px 60px;margin-top:24px}
+    .form-wrap{padding:36px 24px;border-radius:24px}
+    .form-h{font-size:30px}
+    .field input,.field textarea{font-size:16px}
+    .submit-row{flex-direction:column;align-items:stretch;gap:18px;margin-top:24px}
+    .submit-btn{justify-content:center;width:100%}
+    .form-fine{max-width:none}
+    .side{gap:36px}
+    .social-link .lbl strong{font-size:20px}
+    .info-row span{font-size:20px}
+    .strip{padding:36px 18px}
+    .strip-text{font-size:28px}
+    .strip-cta{font-size:16px;padding:18px 24px}
+    .site-footer{flex-direction:column;gap:18px;padding:30px 18px}
+    .footer-logo{font-size:42px}
+    .footer-nav{flex-wrap:wrap;justify-content:center;gap:8px}
+    .footer-nav a{font-size:10px;padding:11px 16px;letter-spacing:.2em}
+    .menu-panel{height:auto;max-height:92vh;padding:16px}
+    .menu-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .menu-card h3{font-size:20px}
+  }
+
+  /* ===== Tablet retrato (481px–768px) ===== */
+  @media (min-width: 481px) and (max-width: 768px){
+    .contato-title{font-size:64px}
+    .form-wrap{padding:44px 36px}
+  }
+
+  /* ===== TV / monitores muito grandes (≥1920px) ===== */
+  @media (min-width: 1920px){
+    .contato-main{max-width:1500px}
+    .strip-inner{max-width:1500px}
+  }
+
+  /* ===== Touch targets ===== */
+  @media (hover: none) and (pointer: coarse){
+    .menu-nav a,.footer-nav a{min-height:44px;display:flex;align-items:center;justify-content:center}
+    .menu-btn,.menu-close{min-height:44px;min-width:44px}
+    .submit-btn{min-height:48px}
+    .social-link{min-height:48px}
+    .menu-card:hover{transform:none}
+  }
+
+  /* ===== Reduced motion ===== */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+
+  /* ===== Print ===== */
+  @media print{
+    .site-header,.menu-panel,.menu-backdrop,.lgpd-banner,
+    .strip,.hero-bg-word{display:none !important}
+    .contato-hero{padding:20px 0 !important;min-height:auto !important}
+    body{color:#000;background:#fff}
+    a{color:#000;text-decoration:underline}
+    .form-wrap{background:#fff;border:1px solid #ccc}
+  }
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
 
 <!-- HEADER -->
 <header class="site-header">
@@ -505,6 +631,7 @@
 </aside>
 
 <!-- HERO -->
+<main id="main">
 <section class="contato-hero">
   <div class="hero-bg-word">CONTATO</div>
   <div class="hero-logo">
@@ -644,16 +771,19 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <a href="Brothers Sorveteria.html" class="footer-logo">
     Brothers
     <small>SORVETERIA · AÇAÍTERIA</small>
   </a>
-  <nav class="footer-nav">
+  <nav class="footer-nav" aria-label="Rodapé">
     <a href="Brothers Sorveteria.html">HOME</a>
     <a href="Brothers Sorveteria.html#sobre">SOBRE</a>
-    <a href="Contato.html" class="active">CONTATO</a>
+    <a href="Contato.html" class="active" aria-current="page">CONTATO</a>
+    <a href="privacidade.html">PRIVACIDADE</a>
   </nav>
   <div class="footer-mini">
     <a href="https://instagram.com/brotherssorveteria" target="_blank">INSTAGRAM</a>
@@ -694,6 +824,8 @@
     setTimeout(() => success.classList.remove('show'), 6000);
   });
 </script>
+
+<script src="lgpd.js" defer></script>
 
 </body>
 </html>

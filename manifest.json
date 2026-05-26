@@ -1,0 +1,21 @@
+{
+  "name": "Brothers Sorveteria e Açaíteria",
+  "short_name": "Brothers",
+  "description": "Sorveteria e Açaíteria artesanal — sabor direto da Amazônia.",
+  "start_url": "/Brothers%20Sorveteria.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#3E1B4F",
+  "lang": "pt-BR",
+  "categories": ["food", "lifestyle", "shopping"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
