@@ -22,7 +22,7 @@ Site estático, leve e responsivo construído com **HTML5**, **CSS3** e **JavaSc
 
 ```
 .
-├── Brothers Sorveteria.html   # Página inicial
+├── index.html   # Página inicial
 ├── Contato.html               # Página de contato com formulário
 ├── privacidade.html           # Política de privacidade (LGPD)
 ├── 404.html                   # Página de erro 404
@@ -38,7 +38,7 @@ Site estático, leve e responsivo construído com **HTML5**, **CSS3** e **JavaSc
 
 ## Como rodar localmente
 
-Como é um site 100% estático, basta abrir o arquivo `Brothers Sorveteria.html` no navegador.
+Como é um site 100% estático, basta abrir o arquivo `index.html` no navegador.
 
 Para uma experiência mais próxima da produção (com `fetch`, rotas etc.), suba um servidor estático:
 
@@ -53,7 +53,7 @@ npx serve .
 php -S localhost:8080
 ```
 
-Depois acesse `http://localhost:8080/Brothers%20Sorveteria.html`.
+Depois acesse `http://localhost:8080/`.
 
 ## Publicação
 

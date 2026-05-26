@@ -2,7 +2,7 @@
   "name": "Brothers Sorveteria e Açaíteria",
   "short_name": "Brothers",
   "description": "Sorveteria e Açaíteria artesanal — sabor direto da Amazônia.",
-  "start_url": "/Brothers%20Sorveteria.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
